@@ -8,7 +8,7 @@
 #include <unistd.h>
 
 #define LEN(x)    (sizeof (x) / sizeof *(x))
-#define TIMEO     30
+#define TIMEOUT   30
 
 static void sigpoweroff(void);
 static void sigreap(void);
@@ -44,7 +44,7 @@ int main(void) {
     size_t i;
 
     while (1) {
-        alarm(TIMEO);
+        alarm(TIMEOUT);
         sigwait(&set, &sig);
 
         for (i = 0; i < LEN(sigmap); i++) {
@@ -65,7 +65,7 @@ static void sigpoweroff(void) {
 
 static void sigreap(void) {
     while (waitpid(-1, NULL, WNOHANG) > 0);
-    alarm(TIMEO);
+    alarm(TIMEOUT);
 }
 
 static void sigreboot(void) {
