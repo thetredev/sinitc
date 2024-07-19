@@ -17,7 +17,6 @@
 
 static void sigpoweroff(void);
 static void sigreap(void);
-static void sigreboot(void);
 static void spawn(char *const []);
 
 static struct {
@@ -27,7 +26,6 @@ static struct {
     { SIGUSR1, sigpoweroff },
     { SIGCHLD, sigreap     },
     { SIGALRM, sigreap     },
-    { SIGINT,  sigreboot   },
 };
 
 
@@ -71,10 +69,6 @@ static void sigpoweroff(void) {
 static void sigreap(void) {
     while (waitpid(-1, NULL, WNOHANG) > 0);
     alarm(TIMEOUT);
-}
-
-static void sigreboot(void) {
-    spawn(rcrebootcmd);
 }
 
 static void spawn(char *const argv[]) {
