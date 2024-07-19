@@ -24,6 +24,9 @@ static struct {
     void (*handler)(void);
 } sigmap[] = {
     { SIGUSR1, sigpoweroff },
+    { SIGINT,  sigpoweroff },
+    { SIGKILL, sigpoweroff },
+    { SIGTERM, sigpoweroff },
     { SIGCHLD, sigreap     },
     { SIGALRM, sigreap     },
 };
