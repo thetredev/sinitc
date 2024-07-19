@@ -1,5 +1,11 @@
+# VS Code
 .vscode
 
+# sinit
 src/sinit/config.h
 src/sinit/sinit
 src/sinit/sinit.o
+
+# Rust
+Cargo.lock
+src/initc/target
