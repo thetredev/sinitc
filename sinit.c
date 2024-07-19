@@ -2,10 +2,15 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
+#ifndef __USE_POSIX
+#define __USE_POSIX
+#endif // __USE_POSIX
+
+#include <signal.h>
 
 #define LEN(x)    (sizeof (x) / sizeof *(x))
 #define TIMEOUT   30
